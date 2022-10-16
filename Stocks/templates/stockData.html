@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+
+        .card .form-but {
+            align-items: center;
+        }
+
+        .header {
+            padding: 15px;
+            font-size: 24px;
+            text-align: center;
+            background: white;
+        }
+
+        .leftcolumn {
+            float: left;
+            width: 69%;
+            margin-top: 40px;
+        }
+
+        .rightcolumn {
+            float: left;
+            width: 31%;
+            padding-left: 10px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .content {
+            width: 85%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .content input {
+            width: 200px;
+            height: 35px;
+            border-radius: 5px;
+            padding: 8px;
+            border: none;
+            outline: none;
+            background-color: rgb(221, 220, 218);
+        }
+
+        .form-but {
+            margin-top: 20px;
+            width: 110px;
+            height: 40px;
+            color: black;
+            font-size: 1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 15px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        @media screen and (max-width: 1400px) {
+
+            .leftcolumn,
+            .rightcolumn {
+                width: 100%;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <li>
+        <ui>
+            <a href="/adminhome">Admin Home</a>
+        </ui>
+        <ui>
+            <a href="/logout">Log out</a>
+        </ui>
+    </li>
+    <div class="row">
+        <div class="leftcolumn">
+            <h2 style="text-align: center">Stock Price Details</h2>
+            <table>
+                <tr>
+                    <th>S. No</th>
+                    <th>Stock Name</th>
+                    <th>Stock Date</th>
+                    <th>Stock Price</th>
+                </tr>
+                {% for stock in stocks %}
+                <tr>
+                    <td>{{ stock.id }}</td>
+                    <td>{{ st.Stock_name }}</td>
+                    <td>{{ stock.Stock_date }}</td>
+                    <td>{{ stock.Stock_price }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="rightcolumn">
+            <div class="card">
+                <form action="/addStockData/{{ st.Stock_id }}/" method="post" style="margin-right: 113px" novalidate>
+                    {% csrf_token %}
+                    <h2>Add Stock Data</h2>
+                    <div class="content">
+                        <label>Stock Name :</label>
+                        <input type="text" name="stock_name"  value="{{ st.Stock_name }}" placeholder="Enter Stock Name" disabled>
+                    </div>
+                    <div class="content">
+                        <label>Stock Date :</label>
+                        <input type="text" placeholder="Enter Stock Date" name="Stock_date" id="Stock_date"
+                            style="font-size: 15px" required="true" />
+                    </div>
+                    <div class="content">
+                        <label>Stock Price :</label>
+                        <input type="text" placeholder="Enter Stock Price" name="Stock_price" id="Stock_price" style="font-size: 15px"
+                            required="true" />
+                    </div>
+                    <button class="form-but" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

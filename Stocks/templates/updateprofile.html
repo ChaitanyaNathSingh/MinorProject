@@ -1,0 +1,48 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="group1">
+                <div class="form-group">
+                    <label class="labels">Username :</label>
+                    <br><input type="text" class="xyz" value="{{ username }}" disabled="true">
+                </div>
+                <div class="form-group">
+                    <label class="labels">First Name :</label>
+                    <br>{{ u_form.first_name }}
+                </div>
+                <div class="form-group">
+                    <label class="labels">Last Name :</label>
+                    <br>{{ u_form.last_name }}
+                </div>
+                <div class="form-group">
+                    <label class="labels">Email :</label>
+                    <br><input type="text" class="xyz" value="{{ email }}" disabled="true">
+                </div>
+                <div class="form-group">
+                    <label class="labels">Phone :</label>
+                    <br>{{ p_form.phone }}
+                </div>
+            </div>
+            <div class="group2">
+                <div class="form-group">
+                    <label class="labels">Gender :</label>
+                    <br>{{ p_form.gender }}
+                </div>
+                <div class="form-group">
+                    <label class="labels">Gender :</label>
+                    <br>{{ p_form.location }}
+                </div>
+                <div class="form-group">
+                    <label class="labels">Gender :</label>
+                    <br>{{ p_form.dob }}
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="charlie" value="Update Profile" style="width: 200px"/>
+                </div>
+            </div>
+        </form>
+    </body>
+</html>

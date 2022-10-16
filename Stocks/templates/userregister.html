@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free Website Template" name="keywords">
+    <meta content="Free Website Template" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS Libraries -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="static/First/flaticon.css" rel="stylesheet">
+    <link href="static/First/animate.min.css" rel="stylesheet">
+    <link href="static/First/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="static/First/style.css" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <title>User Home</title>
+    {% load static %}
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url("static/images/1.jpg") no-repeat center center fixed;
+            -moz-background-size: cover;
+            -webkit-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        .wrapper {
+            width: 1900px;
+            position: fixed;
+        }
+
+        .nav-area {
+            float: right;
+            list-style: none;
+            margin-top: 30px;
+        }
+
+        .nav-area li {
+            display: inline-block;
+        }
+
+        .nav-area li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 20px;
+            font-family: poppins;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+
+        .nav-area li a:hover {
+            background: #fff;
+            color: #333;
+        }
+
+        .logo {
+            float: left;
+        }
+
+        .logo img {
+            width: 150px;
+            height: 90px;
+        }
+
+        .welcome-text {
+            position: absolute;
+            width: 600px;
+            height: 300px;
+            margin: 18% 35%;
+            text-align: center;
+        }
+
+        .welcome-text h1 {
+            text-align: center;
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 40px;
+        }
+
+        .welcome-text h2 {
+            text-align: center;
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 40px;
+        }
+
+        .welcome-text h1 span {
+            color: #00fecb;
+        }
+
+        .welcome-text a {
+            border: 1px solid #fff;
+            padding: 10px 25px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 14px;
+            margin-top: 20px;
+            display: inline-block;
+            color: #fff;
+        }
+
+        .welcome-text a:hover {
+            background: #fff;
+            color: #333;
+        }
+
+        .log {
+            padding: 10px;
+            width: 27%;
+            margin: 13% auto;
+            background: #fff;
+            border-radius: 10px;
+            align-items: center;
+            text-align: center;
+        }
+
+        .log input {
+            width: 70%;
+            padding: 12px;
+            border-radius: 8px;
+            border: #000 2px solid;
+            text-decoration: none;
+            background: #fff;
+            margin: 3% auto;
+        }
+
+        .log textarea {
+            width: 70%;
+            padding: 12px;
+            border-radius: 8px;
+            border: #000 2px solid;
+            text-decoration: none;
+            background: #fff;
+            margin: 3% auto;
+        }
+
+        .log input:focus {
+            outline: none;
+        }
+
+        .log textarea:focus {
+            outline: none;
+        }
+
+        .log a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .log button {
+            width: 25%;
+            border-radius: 20px;
+            background: #000;
+            color: #fff;
+            border: none;
+            outline: none;
+            padding: 12px;
+        }
+
+        .abt {
+            padding: 20px;
+            width: 90%;
+            margin: 2% auto;
+            background: #fff;
+            border-radius: 20px;
+            align-items: center;
+        }
+
+        .abt h3 {
+            line-height: 2em;
+        }
+
+        .cards {
+            margin: 5% auto;
+            max-width: 1500px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-auto-rows: auto;
+            gap: 50px;
+            font-family: sans-serif;
+            padding-top: 30px;
+            padding-bottom: 60px;
+        }
+
+        .cards * {
+            box-sizing: border-box;
+        }
+
+        .card {
+            box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.4);
+            transition-duration: 1s;
+            background-color: #fff;
+        }
+
+        .card:hover {
+            transform: scale(1.12);
+        }
+
+        .card_image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card_content {
+            line-height: 1.5;
+            font-size: 0.9em;
+            padding: 10px;
+        }
+
+        .cnt {
+            margin: 10% auto;
+        }
+
+        /*resposive*/
+
+        @media (max-width:600px) {
+            .wrapper {
+                width: 100%;
+            }
+
+            .logo {
+                float: none;
+                width: 50%;
+                text-align: center;
+                margin: auto;
+            }
+
+            .nav-area {
+                float: none;
+                margin-top: 0;
+            }
+
+            .nav-area li a {
+                padding: 5px;
+                font-size: 11px;
+            }
+
+            .nav-area {
+                text-align: center;
+            }
+
+            .welcome-text {
+                width: 100%;
+                height: auto;
+                margin: 30% 0;
+            }
+
+            .welcome-text h1 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="container" id="container">
+
+        <div class="form-container sign-in-container">
+            <form action="" method="POST">
+                <h1>Sign Up</h1>
+                {% csrf_token %}
+                {% for field in register_form %}
+
+                <ul>{{field.label}}</ul>
+                {{field}}
+                {% endfor %}
+                {% for field in userprofileform %}
+
+                <ul>{{field.label}}</ul>
+                {{field}}
+                {% endfor %}
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+        {% for message in messages %}
+        <p id="messages">{{message}}</p>
+        {% endfor %}
+
+        <script src="static/First/customer_js.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+{% load mathfilters %}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+
+        .card .form-but {
+            align-items: center;
+        }
+
+        .header {
+            padding: 15px;
+            font-size: 24px;
+            text-align: center;
+            background: white;
+        }
+
+        .leftcolumn {
+            float: left;
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .content {
+            width: 85%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .content input {
+            width: 200px;
+            height: 35px;
+            border-radius: 5px;
+            padding: 8px;
+            border: none;
+            outline: none;
+            background-color: rgb(221, 220, 218);
+        }
+
+        .form-but {
+            margin-top: 20px;
+            width: 110px;
+            height: 40px;
+            color: black;
+            font-size: 1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 15px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        @media screen and (max-width: 1400px) {
+
+            .leftcolumn,
+            .rightcolumn {
+                width: 100%;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <li>
+        <ui>
+            <a href="/userhome">User Home</a>
+        </ui>
+        <ui>
+            <a href="/logout">Log out</a>
+        </ui>
+    </li>
+    <div class="row">
+        <h2>Hii {{ user.username }}</h2>
+        <div class="leftcolumn">
+            <h2 style="text-align: center">My Stocks</h2>
+            <table>
+                <tr>
+                    <th>Stock Name</th>
+                    <th>Stock Type</th>
+                    <th>Company Name</th>
+                    <th>About Stock</th>
+                    <th>Purchased Date</th>
+                    <th>Purchased Price</th>
+                    <th>Current Price</th>
+                    <th>Profit</th>
+                    <th>Action</th>
+                </tr>
+                {% for stock in stocks %}
+                <tr>
+                    <td>{{ stock.Stock_id }}</td>
+                    <td>{{ stock.Stock_id.Stock_type }}</td>
+                    <td>{{ stock.Stock_id.Company_name }}</td>
+                    <td style="width:25%;">{{ stock.Stock_id.Stock_about }}</td>
+                    <td>{{ stock.Stock_date }}</td>
+                    <td>{{ stock.Stock_price }}</td>
+                    <td>{{ stock.price }}</td>
+                    {% with a=stock.Stock_price b=stock.price %}
+                    {% if b|sub:a > 0%}
+                    <td style="color:green;">{{ b|sub:a }} &nbsp; <i class="fa fa-arrow-up"></i></a></td>
+                    {% else %}
+                    <td style="color:red;">{{ b|sub:a }} &nbsp; <i class="fa fa-arrow-down"></i></a></td>
+                    {% endif %}
+                    {% endwith %}
+                    <td style="font-size: 18px;"><a href=""><i class="fa fa-cart-arrow-down"></i></a> &nbsp; Sell</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+

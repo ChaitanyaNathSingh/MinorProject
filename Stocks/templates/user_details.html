@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Hi {{ user.username }}</h1>
+    <li>
+        <ui>
+            <a href="/adminhome">Admin Home</a>
+        </ui>
+        <ui>
+            <a href="/logout">Log out</a>
+        </ui>
+    </li>
+    <h2>User Details</h2>
+
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Gender</th>
+            <th>Date of Birth</th>
+            <th>Location</th>
+            <th>Action</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{ i.0 }}</td>
+            <td>{{ i.1 }}</td>
+            <td>{{ i.2 }}</td>
+            <td>{{ i.3 }}</td>
+            <td>{{ i.4 }}</td>
+            <td>{{ i.5 }}</td>
+            <td>{{ i.6 }}</td>
+            <td><a href="/delete/{{ i.0 }}/"><i class="fa fa-trash"></i></a> Delete</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</body>
+
+</html>

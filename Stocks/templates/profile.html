@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <nav>
+            <a href="/userhome">Home</a>
+        </nav>
+    </head>
+    <body>
+        <h2>Username : {{ user.username }}</h2>
+        <h2>Fullname : {{ user.first_name }} {{ user.last_name }}</h2>
+        <h2>{{ user.email }}</h2>
+        <h2>{{ user.profile.gender }}</h2>
+        <h2>{{ user.profile.location }}</h2>
+        <h2>{{ user.profile.dob }}</h2>
+        <h2>{{ user.profile.phone }}</h2>
+        <a href="/updateprofile">Update Profile</a>
+    </body>
+</html>

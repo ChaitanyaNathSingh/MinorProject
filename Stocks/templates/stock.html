@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+
+        .card .form-but {
+            align-items: center;
+        }
+
+        .header {
+            padding: 15px;
+            font-size: 24px;
+            text-align: center;
+            background: white;
+        }
+
+        .leftcolumn {
+            float: left;
+            width: 69%;
+            margin-top: 40px;
+        }
+
+        .rightcolumn {
+            float: left;
+            width: 31%;
+            padding-left: 10px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .content {
+            width: 85%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .content input {
+            width: 200px;
+            height: 35px;
+            border-radius: 5px;
+            padding: 8px;
+            border: none;
+            outline: none;
+            background-color: rgb(221, 220, 218);
+        }
+
+        .form-but {
+            margin-top: 20px;
+            width: 110px;
+            height: 40px;
+            color: black;
+            font-size: 1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 15px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        @media screen and (max-width: 1400px) {
+
+            .leftcolumn,
+            .rightcolumn {
+                width: 100%;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <li>
+        <ui>
+            <a href="/adminhome">Admin Home</a>
+        </ui>
+        <ui>
+            <a href="/logout">Log out</a>
+        </ui>
+    </li>
+    <div class="row">
+        <div class="leftcolumn">
+            <h2 style="text-align: center">Stock Details</h2>
+            <table>
+                <tr>
+                    <th>Stock ID</th>
+                    <th>Stock Name</th>
+                    <th>Stock Type</th>
+                    <th>Company Name</th>
+                    <th>About Stock</th>
+                    <th>Action</th>
+                </tr>
+                {% for stock in stocks %}
+                <tr>
+                    <td>{{ stock.Stock_id }}</td>
+                    <td>{{ stock.Stock_name }}</td>
+                    <td>{{ stock.Stock_type }}</td>
+                    <td>{{ stock.Company_name }}</td>
+                    <td style="width:40%;">{{ stock.Stock_about }}</td>
+                    <td style="width:15%;">
+                        <a href="/stockData/{{ stock.Stock_id }}/"><i class="fa fa-eye"></i></a>
+                        &nbsp; &nbsp; &nbsp;
+                        <a href="/deleteStock/{{ stock.Stock_id }}/"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="rightcolumn">
+            <div class="card">
+                <form action="/addStock/" method="post" style="margin-right: 113px" novalidate>
+                    {% csrf_token %}
+                    <h2>Add Stock</h2>
+                    <div class="content">
+                        <label>Stock Name :</label>
+                        <input type="text" placeholder="Enter Stock Name" name="Stock_name" id="Stock_name" style="font-size: 15px"
+                            required="false" value="{{ stock.Stock_name }}"/>
+                    </div>
+                    <div class="content">
+                        <label>Stock Type :</label>
+                        <input type="text" placeholder="Enter Stock Type" name="Stock_type" id="Stock_type"
+                            style="font-size: 15px" required="false" />
+                    </div>
+                    <div class="content">
+                        <label>Company Name :</label>
+                        <input type="text" placeholder="Enter Company Name" name="Company_name" id="Company_name" style="font-size: 15px"
+                            required="false" />
+                    </div>
+                    <div class="content">
+                        <label>About Stock:</label>
+                        <input type="textarea" placeholder="" name="Stock_about" id="Stock_about"
+                            style="font-size: 15px;" required="false" />
+                    </div>
+                    <button class="form-but" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
